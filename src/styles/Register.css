@@ -1,0 +1,175 @@
+/* RegisterPage Styles */
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: radial-gradient(circle at top, #2a1d52, #1a1738, #0f0e1f);
+  padding: 20px; /* Prevents overflow on smaller screens */
+}
+
+.password-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  background: radial-gradient(circle at top, #2a1d52, #1a1738, #0f0e1f);
+  padding: 50px;
+  position: relative;
+  top: 94px;
+}
+
+.register-box {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 30px;
+  width: 100%;
+  max-width: 420px; /* Slightly wider for more space */
+  max-height: 80vh; /* Limits height so it doesn't touch top/bottom */
+  text-align: center;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.5);
+  overflow-y: auto; /* Enables scrolling within the form if needed */
+  animation: fadeIn 0.6s ease-out;
+}
+
+.reset-box {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 87px;
+  width: 124%;
+  max-width: 420px;
+  max-height: 100vh;
+  text-align: center;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.register-title {
+  font-size: 1.6rem;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.register-subtitle {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin-bottom: 25px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #555;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  transition: border-color 0.3s ease;
+}
+
+.register-input:focus {
+  border-color: #888;
+  outline: none;
+}
+
+.register-button {
+  padding: 10px;
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background 0.3s ease;
+}
+
+.register-button:hover {
+  background: linear-gradient(90deg, #5e10c2, #2065e5);
+}
+
+.register-or {
+  margin: 15px 0;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.register-social {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 15px;
+}
+
+.social-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.social-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.register-footer {
+  color: #aaa;
+  font-size: 0.85rem;
+}
+
+.register-link,
+.register-support {
+  color: #ccc;
+  font-weight: 500;
+  text-decoration: none;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.register-link:hover,
+.register-support:hover {
+  text-decoration: underline;
+}
+
+/* Adding starry effect */
+.register-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 1px,
+    transparent 1px
+  );
+  background-size: 3px 3px;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,49 @@
+.hero {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px;
+  background-color: #14131c;
+}
+
+.hero-text {
+  flex: 1;
+  padding-left: 9rem;
+  padding-top: 4rem;
+}
+
+.hero h1 {
+  font-size: 53px;
+  width: 24rem;
+}
+
+.hero p {
+  margin: 20px 0;
+}
+
+.hero-btn {
+  background-color: #2b2838;
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  cursor: pointer;
+  margin-top: 3rem;
+}
+
+.hero-image {
+  flex: 0 0 500px; /* Allow flex to respect width but not grow */
+  height: auto; /* Maintain aspect ratio */
+  max-width: 100%; /* Ensure image is responsive */
+  padding-right: 12rem;
+  background-color: transparent; /* Set background to transparent */
+  overflow: hidden; /* Prevents overflow of image */
+}
+
+.hero-image img {
+  width: 100%; /* Makes the image responsive */
+  height: auto; /* Maintain aspect ratio */
+}
+
+#para {
+  font-size: 20px;
+  width: 36rem;
+}
