@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/Register.css";
 
 const RegisterPage = () => {
@@ -28,7 +28,7 @@ const RegisterPage = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://career-waves-education-t5b4.vercel.app/api/v1/users/register",
+        "https://career-waves-backend.vercel.app/api/v1/users/register",
         formData
       );
       console.log("Form Submitted Successfully:", response.data);
@@ -106,9 +106,9 @@ const RegisterPage = () => {
           <p className="register-or">or</p>
           <p className="register-footer">
             Already have an account?{" "}
-            <a href="/Login" className="register-link">
+            <Link to="/login" className="register-link">
               Login
-            </a>
+            </Link>
           </p>
         </form>
         <a href="/AuthCode" className="register-support">

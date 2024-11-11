@@ -15,7 +15,7 @@ export const UserProvider = ({ children }) => {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
-          "https://career-waves-education-t5b4.vercel.app/api/v1/users/me",
+          "https://career-waves-backend.vercel.app/api/v1/users/me",
           {
             withCredentials: true, // Sends the stored JWT token cookie
           }

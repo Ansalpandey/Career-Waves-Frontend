@@ -23,7 +23,7 @@ const ResetPassword = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://career-waves-education-t5b4.vercel.app/api/v1/users/register",
+        "https://career-waves-backend.vercel.app/api/v1/users/register",
         formData
       );
       console.log("Form Submitted Successfully:", response.data);

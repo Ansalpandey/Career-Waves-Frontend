@@ -25,7 +25,7 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://career-waves-education-t5b4.vercel.app/api/v1/users/login",
+        "https://career-waves-backend.vercel.app/api/v1/users/login",
         formData,
         { withCredentials: true }
       );
@@ -80,8 +80,8 @@ const LoginPage = () => {
           <p className="register-or">or</p>
           <p className="register-footer">
             Don&apos;t have an account?{" "}
-            <Link to="/Register" className="register-link">
-              Register
+            <Link to="/register" className="register-link">
+              Register 
             </Link>
           </p>
         </form>
