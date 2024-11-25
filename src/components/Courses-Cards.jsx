@@ -14,7 +14,7 @@ const UniversityCards = () => {
     const fetchUniversities = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/v1/universities/",
+          "https://career-waves-backend.vercel.app/api/v1/universities/",
           { withCredentials: true }
         );
         setUniversities(response.data);
