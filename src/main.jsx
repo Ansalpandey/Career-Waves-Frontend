@@ -12,6 +12,7 @@ import AuthCode from "./pages/AuthCode";
 import { UserProvider } from "./contexts/UserContext";
 import "./styles/index.css";
 import ContactUsPage from "./pages/ContactUs";
+import UniversityDetail from "./components/UniversityDetails";
 
 // Define routes
 const router = createBrowserRouter([
@@ -20,11 +21,11 @@ const router = createBrowserRouter([
     element: <App />, // Main App with all sections
   },
   {
-    path: "/courses",
+    path: "/universities",
     element: <Courses />, // Courses page
   },
   {
-    path: "/aboutus",
+    path: "/about-us",
     element: <AboutUs />,
   },
   {
@@ -36,20 +37,24 @@ const router = createBrowserRouter([
     element: <LoginPage />,
   },
   {
-    path: "/ResetPassword",
+    path: "/reset-password",
     element: <ResetPassword />,
   },
   {
-    path: "/CreateNewPassword",
+    path: "/create-new-password",
     element: <CreateNewPassword />,
   },
   {
-    path: "/AuthCode",
+    path: "/auth-code",
     element: <AuthCode />,
   },
   {
-    path: "/contactus",
+    path: "/contact-us",
     element: <ContactUsPage />,
+  },
+  {
+    path: "/university/:id",
+    element: <UniversityDetail />,
   },
 ]);
 

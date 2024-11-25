@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import "../styles/Contact.css"; // Import your CSS styling here
+import axios from "axios"; // Import axios
 
 const ContactUsPage = () => {
   const [formData, setFormData] = useState({
@@ -21,7 +22,23 @@ const ContactUsPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Submitted Successfully:", formData);
-    // Optionally handle form data submission logic here (e.g., send data to an API endpoint)
+    setFormData({
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    });
+
+    // Send the form data to the server
+    axios.post("https://career-waves-backend.vercel.app/api/v1/contactus", formData, {
+      withCredentials: true,
+    })
+    .then((response) => {
+      console.log("Server Response:", response.data);
+    })
+    .catch((error) => {
+      console.error("Error submitting form:", error);
+    });
   };
 
   return (
@@ -72,8 +89,8 @@ const ContactUsPage = () => {
         </form>
         <p className="contact-footer">
           For immediate support, you can also reach us at{" "}
-          <a href="mailto:support@example.com" className="contact-link">
-            support@example.com
+          <a href="mailto:support@careerwaveseducation.in" className="contact-link">
+          support@careerwaveseducation.in
           </a>
         </p>
       </div>

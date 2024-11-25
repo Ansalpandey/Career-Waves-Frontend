@@ -1,89 +1,67 @@
 // eslint-disable-next-line no-unused-vars
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"; // For navigation
 import "../styles/Courses-Cards.css";
+import axios from "axios";
 
-const courses = [
-  {
-    title: "Responsive Video Website Like Facebook Design",
-    description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum et tempore amet repellat maiores laboriosam distinctio?",
-    image: "/course1.jpg", // Ensure this image path is correct
-  },
+const UniversityCards = () => {
+  const [universities, setUniversities] = useState([]); // State to store university data
+  const [error, setError] = useState(null); // State to store errors
+  const [loading, setLoading] = useState(true); // State to manage loading state
+  const navigate = useNavigate(); // React Router's navigation hook
 
-  {
-    title: "React for Beginners",
-    description:
-      "Get started with React, a popular library for building user interfaces.",
-    image: "/course1.jpg",
-  },
-  {
-    title: "Mastering HTML & CSS",
-    description: "Dive deep into HTML and CSS to build responsive websites.",
-    image: "/course1.jpg",
-  },
-  {
-    title: "Introduction to DBMS",
-    description:
-      "Learn the fundamentals of Database Management Systems (DBMS).",
-    image: "/course1.jpg",
-  },
-  {
-    title: "Advanced Java Programming",
-    description:
-      "Enhance your Java skills with advanced concepts and techniques.",
-    image: "/course1.jpg",
-  },
-  {
-    title: "Advanced Java Programming",
-    description:
-      "Enhance your Java skills with advanced concepts and techniques.",
-    image: "/course1.jpg",
-  },
-  {
-    title: "Advanced Java Programming",
-    description:
-      "Enhance your Java skills with advanced concepts and techniques.",
-    image: "/course1.jpg",
-  },
-  {
-    title: "Advanced Java Programming",
-    description:
-      "Enhance your Java skills with advanced concepts and techniques.",
-    image: "/course1.jpg",
-  },
-  {
-    title: "Advanced Java Programming",
-    description:
-      "Enhance your Java skills with advanced concepts and techniques.",
-    image: "/course1.jpg",
-  },
-  {
-    title: "Advanced Java Programming",
-    description:
-      "Enhance your Java skills with advanced concepts and techniques.",
-    image: "/course1.jpg",
-  },
-];
+  useEffect(() => {
+    const fetchUniversities = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:3000/api/v1/universities/",
+          { withCredentials: true }
+        );
+        setUniversities(response.data);
+        if (response.data.length === 0) {
+          setError("No universities found.");
+        }
+      } catch (err) {
+        setError("Failed to load universities.");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-const CoursesCards = () => {
+    fetchUniversities();
+  }, []);
+
   return (
     <div className="courses__container">
-      {courses.map((course, index) => (
-        <article key={index} className="course">
-          <div className="course__image">
-            <img src={course.image} alt={course.title} />
-          </div>
-          <div className="course__info">
-            <h4>{course.title}</h4>
-            <p>{course.description}</p>
-            <a href="/courses" className="btn btn-primary">
-              Learn More
-            </a>
-          </div>
-        </article>
-      ))}
+      <h2>Universities</h2>
+
+      {loading && <p>Loading...</p>}
+      {error && <p className="error">{error}</p>}
+
+      <div className="courses__grid">
+        {universities.map((university) => (
+          <article key={university._id} className="course">
+            <div className="course__image">
+              <img
+                src={university.coverImage || "default-image.jpg"}
+                alt={university.name}
+              />
+            </div>
+            <div className="course__info">
+              <h4>{university.name}</h4>
+              <p>{university.description?.substring(0, 100) || "No description available."}...</p>
+              <button
+                className="btn btn-primary"
+                onClick={() => navigate(`/university/${university._id}`)}
+              >
+                Learn More
+              </button>
+            </div>
+          </article>
+        ))}
+      </div>
     </div>
   );
 };
 
-export default CoursesCards;
+export default UniversityCards;
